@@ -57,7 +57,7 @@
         "2>&1",
         "||",
         "echo",
-        "Complete cleanup.",
+        "Complete cleanup."
       ],
       "windows": {
         "command": "rd",
@@ -89,9 +89,9 @@
           "2>&1",
           "||",
           "echo",
-          "Complete cleanup.",
-        ],
-      },
+          "Complete cleanup."
+        ]
+      }
     },
     {
       "type": "shell",
@@ -113,10 +113,8 @@
           "||",
           "echo",
           "made build directory"
-          // "chcp",
-          // "65001",
-        ],
-      },
+        ]
+      }
     },
     {
       "type": "shell",
@@ -135,12 +133,8 @@
         "-DCMAKE_BUILD_TYPE=Debug",
         "-DCMAKE_C_COMPILER=clang",
         "-DCMAKE_CXX_COMPILER=clang++",
-        // "-DCMAKE_C_FLAGS=\"-g -O0\"",
-        // "-DCMAKE_CXX_FLAGS=\"-g -O0\"",
         "-DCMAKE_C_FLAGS=\"-g -O0 -save-temps=obj\"",
         "-DCMAKE_CXX_FLAGS=\"-g -O0 -save-temps=obj\"",
-        // "-DCMAKE_C_FLAGS=\"-g -O0 -S -masm=intel -save-temps=obj\"",
-        // "-DCMAKE_CXX_FLAGS=\"-g -O0 -S -masm=intel -save-temps=obj\"",
         "-DCMAKE_FIND_DEBUG_MODE=1",
         "&&",
         "cmake",
@@ -179,9 +173,7 @@
         }
       },
       "dependsOrder": "sequence",
-      "dependsOn": [
-        // "CLEANUP"
-      ],
+      "dependsOn": []
     },
     {
       "type": "shell",
@@ -200,12 +192,8 @@
         "-DCMAKE_BUILD_TYPE=Release",
         "-DCMAKE_C_COMPILER=clang",
         "-DCMAKE_CXX_COMPILER=clang++",
-        // "-DCMAKE_C_FLAGS=\"-g -O0\"",
-        // "-DCMAKE_CXX_FLAGS=\"-g -O0\"",
         "-DCMAKE_C_FLAGS=\"-g -O0 -save-temps=obj\"",
         "-DCMAKE_CXX_FLAGS=\"-g -O0 -save-temps=obj\"",
-        // "-DCMAKE_C_FLAGS=\"-g -O0 -S -masm=intel -save-temps=obj\"",
-        // "-DCMAKE_CXX_FLAGS=\"-g -O0 -S -masm=intel -save-temps=obj\"",
         "&&",
         "cmake",
         "--build",
@@ -216,8 +204,16 @@
         "${fileDirname}/build",
         "&&",
         "${workspaceFolder}\\.vscode\\bin\\signtool.exe",
-        "sign","/f","${workspaceFolder}\\.vscode\\bin\\certificate.pfx","/p","${env:PASS}",
-        "/tr","http://timestamp.digicert.com","/td","SHA256", "${workspaceFolder}/build/*.exe",
+        "sign",
+        "/f",
+        "${workspaceFolder}\\.vscode\\bin\\certificate.pfx",
+        "/p",
+        "${env:PASS}",
+        "/tr",
+        "http://timestamp.digicert.com",
+        "/td",
+        "SHA256",
+        "${workspaceFolder}/build/*.exe",
         "&&",
         "echo",
         "Cmake Success!!!!!!!!!!!!!!!!"
@@ -250,24 +246,16 @@
         }
       },
       "dependsOrder": "sequence",
-      "dependsOn": [
-        // "CLEANUP"
-      ],
+      "dependsOn": []
     },
     {
       "type": "shell",
       "label": "Debug C++",
       "group": "build",
       "command": "clang++",
-      // http://solid.kmckk.com/doc/skit/current/solid_toolchain/overview.html
-      // https://clang.llvm.org/docs/ClangCommandLineReference.html
-      // https://snipsnipsnip.tumblr.com/post/400226078/md-mt-msvcrt-lib-libc-lib-libcmt-lib
       "windows": {
         "args": [
           "-v",
-          // "-S",
-          // "-masm=intel",
-          // "-save-temps=obj",
           "-D_${workspaceFolderBasename}_EXPORTS",
           "-I${env:PYTHONPATH}/include",
           "-I${workspaceFolder}/include",
@@ -280,7 +268,6 @@
           "-Xclang",
           "-gcodeview",
           "-O0",
-          // "-D_DEBUG",
           "-D_DLL",
           "-D_MT",
           "-std=c++17",
@@ -300,8 +287,6 @@
           "&&",
           "clang++",
           "-v",
-          // "-static",
-          // "-pthread",
           "-fuse-ld=lld-link",
           "-nostartfiles",
           "-nostdlib",
@@ -309,7 +294,6 @@
           "-Xclang",
           "-gcodeview",
           "-O0",
-          // "-D_DEBUG",
           "-D_DLL",
           "-D_MT",
           "-Xclang",
@@ -344,12 +328,10 @@
           "&&",
           "echo",
           "Linker Success!!!!!!!!!!!!!!!!"
-        ],
+        ]
       },
       "args": [
         "-v",
-        // "-S",
-        // "-masm=intel",
         "-save-temps=obj",
         "-D_${workspaceFolderBasename}_EXPORTS",
         "-g",
@@ -406,20 +388,16 @@
       "dependsOrder": "sequence",
       "dependsOn": [
         "pre_makedir"
-      ],
+      ]
     },
     {
       "type": "shell",
       "label": "Release C++",
       "group": "build",
       "command": "clang++",
-      // http://solid.kmckk.com/doc/skit/current/solid_toolchain/overview.html
-      // https://clang.llvm.org/docs/ClangCommandLineReference.html
       "windows": {
         "args": [
           "-v",
-          // "-S",
-          // "-masm=intel",
           "-save-temps=obj",
           "-D_${workspaceFolderBasename}_EXPORTS",
           "-I${workspaceFolder}/include",
@@ -432,7 +410,6 @@
           "-g",
           "-Xclang",
           "-gcodeview",
-          // "-D_DEBUG", // <- require
           "-O2",
           "-D_DLL",
           "-D_MT",
@@ -495,21 +472,22 @@
           "-loldnames",
           "&&",
           "${workspaceFolder}\\.vscode\\bin\\signtool.exe",
-          "sign","/f","${workspaceFolder}\\.vscode\\bin\\certificate.pfx","/p","${env:PASS}",
-          "/tr","http://timestamp.digicert.com","/td","SHA256", "${workspaceFolder}/build/*.exe",
+          "sign",
+          "/a",
+          "/tr",
+          "http://timestamp.digicert.com",
+          "${workspaceFolder}/build/*.exe",
           "&&",
           "echo",
           "Linker Success!!!!!!!!!!!!!!!!"
-        ],
+        ]
       },
       "args": [
         "-v",
-        // "-S",
-        // "-masm=intel",
         "-save-temps=obj",
         "-D_${workspaceFolderBasename}_EXPORTS",
         "-g",
-        "-D_DEBUG", // <- require
+        "-D_DEBUG",
         "-O2",
         "-std=gnu++17",
         "-Wall",
@@ -561,7 +539,7 @@
       "dependsOrder": "sequence",
       "dependsOn": [
         "pre_makedir"
-      ],
+      ]
     },
     {
       "type": "process",
@@ -577,9 +555,7 @@
         "-gf"
       ],
       "dependsOrder": "sequence",
-      "dependsOn": [
-        // "CLEANUP"
-      ],
+      "dependsOn": []
     },
     {
       "type": "process",
@@ -594,9 +570,28 @@
         "build"
       ],
       "dependsOrder": "sequence",
-      "dependsOn": [
-        // "CLEANUP"
-      ],
+      "dependsOn": []
     },
+    {
+      "type": "cppbuild",
+      "label": "C/C++: clang++.exe アクティブなファイルのビルド",
+      "command": "Y:/bin/clang++.exe",
+      "args": [
+        "-fcolor-diagnostics",
+        "-fansi-escape-codes",
+        "-g",
+        "${file}",
+        "-o",
+        "${fileDirname}\\${fileBasenameNoExtension}.exe"
+      ],
+      "options": {
+        "cwd": "Y:/bin"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build",
+      "detail": "コンパイラ: Y:/bin/clang++.exe"
+    }
   ]
 }

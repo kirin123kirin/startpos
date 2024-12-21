@@ -18,23 +18,15 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Python: 現在のファイル",
-      "type": "python",
-      "request": "launch",
-      "program": "${file}",
-      "console": "integratedTerminal",
-      "justMyCode": true
-    },
-    {
       "name": "win : C++ Debug",
       "type": "lldb",
       "request": "launch",
       "program": "${workspaceFolder}/build/${fileBasenameNoExtension}.exe",
-      "args": [],
-      "stopAtEntry": false,
+      "args": ["notepad.exe", "100","100","100","100"],
+      // "stopAtEntry": false,
       "cwd": "${fileDirname}",
-      "environment": [],
-      "preLaunchTask": "win : Debug C++",
+      // "environment": [],
+      "preLaunchTask": "Debug C++",
       "console": "internalConsole"
     },
     {
@@ -46,181 +38,8 @@
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
       "environment": [],
-      "preLaunchTask": "win : Release C++",
+      "preLaunchTask": "Release C++",
       "console": "internalConsole"
-    },
-    {
-      "name": "Win : Instant Debug from py",
-      "type": "lldb",
-      "request": "launch",
-      "program": "python",
-      "args": [
-        "${file}"
-      ],
-      "stopAtEntry": false,
-      "cwd": "${workspaceFolder}",
-      "environment": [],
-      "console": "internalConsole",
-      "preLaunchTask": "win : Debug Setup.py"
-    },
-    {
-      "name": "Win : Instant Release from py",
-      "type": "lldb",
-      "request": "launch",
-      "program": "python",
-      "args": [
-        "${file}"
-      ],
-      "stopAtEntry": false,
-      "cwd": "${workspaceFolder}",
-      "environment": [],
-      "console": "internalConsole",
-      "preLaunchTask": "win : Release Setup.py"
-    },
-    {
-      "name": "win : Debug Setup.py",
-      "type": "lldb",
-      "request": "launch",
-      "program": "python",
-      "args": [
-        "-m",
-        "pytest",
-        ".."
-      ],
-      "stopAtEntry": false,
-      "cwd": "${workspaceFolder}/build",
-      "environment": [],
-      "preLaunchTask": "win : Debug Setup.py",
-      "console": "internalConsole"
-    },
-    {
-      "name": "win : Release Setup.py",
-      "type": "lldb",
-      "request": "launch",
-      "program": "python",
-      "args": [
-        "-m",
-        "pytest",
-        ".."
-      ],
-      "stopAtEntry": false,
-      "cwd": "${workspaceFolder}/build",
-      "environment": [],
-      "preLaunchTask": "win : Release Setup.py",
-      "console": "internalConsole"
-    },
-    {
-      "name": "linux : C++ Debug",
-      "type": "lldb",
-      "request": "launch",
-      "program": "${workspaceFolder}/build/${fileBasenameNoExtension}.exe",
-      "args": [],
-      "stopAtEntry": false,
-      "cwd": "${fileDirname}",
-      "environment": [],
-      "preLaunchTask": "linux : Debug C++",
-      "console": "internalConsole"
-    },
-    {
-      "name": "linux : C++ Release",
-      "type": "lldb",
-      "request": "launch",
-      "program": "${workspaceFolder}/build/${fileBasenameNoExtension}.exe",
-      "args": [],
-      "stopAtEntry": false,
-      "cwd": "${fileDirname}",
-      "environment": [],
-      "preLaunchTask": "linux : Release C++",
-      "console": "internalConsole"
-    },
-    {
-      "name": "linux : Debug Setup.py",
-      "type": "lldb",
-      "request": "launch",
-      "program": "python3",
-      "args": [
-        "-m",
-        "pytest",
-        ".."
-      ],
-      "stopAtEntry": false,
-      "cwd": "${workspaceFolder}/build",
-      "environment": [],
-      "preLaunchTask": "linux : Debug Setup.py",
-      "console": "internalConsole"
-    },
-    {
-      "name": "linux : Release Setup.py",
-      "type": "lldb",
-      "request": "launch",
-      "program": "python3",
-      "args": [
-        "-m",
-        "pytest",
-        ".."
-      ],
-      "stopAtEntry": false,
-      "cwd": "${workspaceFolder}/build",
-      "environment": [],
-      "preLaunchTask": "linux : Release Setup.py",
-      "console": "internalConsole"
-    },
-    {
-      "name": "linux : Instant Debug from py",
-      "type": "lldb",
-      "request": "launch",
-      "program": "python3",
-      "args": [
-        "${file}"
-      ],
-      // "MIMode": "gdb",
-      // "setupCommands": [
-      //   {
-      //     "description": "Enable reformat of gdb",
-      //     "text": "-enable-pretty-printing",
-      //     "ignoreFailures": true
-      //   }
-      // ],
-      // "miDebuggerPath": "/usr/bin/gdb",
-      // "miDebuggerArgs": "-q -ex quit; wait() { fg >/dev/null; }; /usr/bin/gdb -q -f --interpreter=mi",
-      "stopAtEntry": false,
-      "cwd": "${workspaceFolder}",
-      "environment": [],
-      "console": "internalConsole",
-      "preLaunchTask": "linux : Debug Setup.py"
-    },
-    
-    {
-      "name": "linux : Instant Release from py",
-      "type": "lldb",
-      "request": "launch",
-      "program": "python3",
-      "args": [
-        "${file}"
-      ],
-      "stopAtEntry": false,
-      "cwd": "${workspaceFolder}",
-      "environment": [],
-      "console": "internalConsole",
-      "preLaunchTask": "linux : Release Setup.py"
-    },
-    {
-      "name": "html-js Debug",
-      "request": "launch",
-      "type": "chrome",
-      "internalConsoleOptions": "openOnSessionStart",
-      "file": "${file}",
-      // "url": "http://localhost:3000/${workspaceFolderBasename}/index.html",
-      "webRoot": "${workspaceFolder}/${workspaceFolderBasename}/",
-      // "sourceMaps": true,
-      "trace": true,
-      "runtimeExecutable": "stable",
-      "runtimeArgs": [
-        // "--headless",
-        // "--disable-gpu",
-        // "--remote-debugging-port=9222",
-        "--incognito" //private mode
-      ],
-    },
+    }
   ]
 }

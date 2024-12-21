@@ -4,11 +4,11 @@
             "name": "win64_d",
             "includePath": [
                 ".",
-                "C:\\usr\\local\\LLVM\\include\\clang-c",
-                "C:\\usr\\local\\LLVM\\include\\llvm-c",
+                "Y:\\include\\clang-c",
+                "Y:\\include\\llvm-c",
                 "${env:PYTHONPATH}\\include",
-                "${env:APPROOT}\\usr\\local\\include",
-                "C:\\usr\\lib\\boost",
+                "Y:\\usr\\local\\include",
+                "Y:\\lib\\boost_1_83_0\\include\\boost-1_83",
                 "${workspaceFolder}/**"
             ],
             "defines": [
@@ -16,7 +16,7 @@
                 "UNICODE",
                 "_UNICODE"
             ],
-            "compilerPath": "C:/usr/local/LLVM/bin/clang++.exe",
+            "compilerPath": "Y:/bin/clang++.exe",
             "cStandard": "c11",
             "cppStandard": "c++14",
             "intelliSenseMode": "windows-clang-x64",
