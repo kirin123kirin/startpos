@@ -1,0 +1,12 @@
+[submodule ".vscode"]
+	path = .vscode
+	url = https://github.com/kirin123kirin/.vscode.git
+	branch = main
+[submodule "include"]
+	path = include
+	url = https://github.com/kirin123kirin/include.git
+	branch = main
+[submodule ".github"]
+	path = .github
+	url = https://github.com/kirin123kirin/.github.git
+	branch = main
