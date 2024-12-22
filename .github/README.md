@@ -1,9 +1,1 @@
-# Secrets setting
-```
-PYPI_PASSWORD
-PYPI_USERNAME
-TEST_PYPI_PASSWORD
-TEST_PYPI_USERNAME
-VT_API_KEY
-PASSWORD #for signtools
-```
+ttps://softaro.jp/download-file/29476/?tmstv=1734836171&version=64-bit
